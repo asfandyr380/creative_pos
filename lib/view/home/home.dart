@@ -2,6 +2,7 @@ import 'package:creative_pos/models/nav_item_model.dart';
 import 'package:creative_pos/view/dashboard/dashboard.dart';
 import 'package:creative_pos/view/home/componants/side_navbar.dart';
 import 'package:creative_pos/view/home/controller/home_controller.dart';
+import 'package:creative_pos/view/sales/new_sale.dart';
 import 'package:creative_pos/view/sales/sales.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,13 +42,16 @@ class Home extends StatelessWidget {
               () => IndexedStack(
                 index: controller.currentIndex.value,
                 children: [
-                  Dashboard(),
-                  Sales(),
+                  const Dashboard(),
+                  Sales((){
+                    controller.currentIndex.value = 7;
+                  }),
                   Text("purchase"),
                   Text("stock"),
                   Text("customer"),
                   Text("reports"),
                   Text("setting"),
+                  NewSale(),
                 ],
               ),
             ),

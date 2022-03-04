@@ -1,5 +1,4 @@
 import 'package:creative_pos/view/sales/controller/sales_controller.dart';
-import 'package:creative_pos/view/sales/new_sale.dart';
 import 'package:creative_pos/widgets/custom_button.dart';
 import 'package:creative_pos/widgets/custom_field.dart';
 import 'package:creative_pos/widgets/custom_table.dart';
@@ -8,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Sales extends StatelessWidget {
+  final Function newSale;
+  Sales(this.newSale);
   SalesController controller = Get.put(SalesController());
 
   @override
@@ -20,7 +21,7 @@ class Sales extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomButton(
-                text: "Create Sale", onTap: () => Get.dialog(NewSale())),
+                text: "Create Sale", onTap: () => newSale()),
             const SizedBox(height: 28),
             Align(
               alignment: Alignment.centerRight,
