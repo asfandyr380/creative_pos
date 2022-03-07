@@ -2,6 +2,8 @@ import 'package:creative_pos/models/nav_item_model.dart';
 import 'package:creative_pos/view/dashboard/dashboard.dart';
 import 'package:creative_pos/view/home/componants/side_navbar.dart';
 import 'package:creative_pos/view/home/controller/home_controller.dart';
+import 'package:creative_pos/view/purchase/newPurchase.dart';
+import 'package:creative_pos/view/purchase/purchase.dart';
 import 'package:creative_pos/view/sales/new_sale.dart';
 import 'package:creative_pos/view/sales/sales.dart';
 import 'package:flutter/material.dart';
@@ -46,12 +48,15 @@ class Home extends StatelessWidget {
                   Sales((){
                     controller.currentIndex.value = 7;
                   }),
-                  Text("purchase"),
+                  Purchase((){
+                    controller.currentIndex.value = 8;
+                  }),
                   Text("stock"),
                   Text("customer"),
                   Text("reports"),
                   Text("setting"),
                   NewSale(),
+                  NewPurchase(),
                 ],
               ),
             ),

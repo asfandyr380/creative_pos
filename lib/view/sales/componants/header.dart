@@ -6,8 +6,13 @@ import '../../../widgets/custom_searchabletextfield.dart';
 class Header extends StatelessWidget {
   final TextEditingController controller;
   final Function onTap;
-  const Header({Key? key, required this.controller, required this.onTap})
-      : super(key: key);
+  final String fieldHint;
+  const Header({
+    Key? key,
+    required this.controller,
+    required this.onTap,
+    this.fieldHint = "select Customer",
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +58,7 @@ class Header extends StatelessWidget {
           CustomSearchableField(
             controller: controller,
             prefixIcon: Icons.person,
-            hintText: "select customer",
+            hintText: fieldHint,
             constraints: const BoxConstraints(maxHeight: 45, maxWidth: 200),
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
