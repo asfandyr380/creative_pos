@@ -26,7 +26,7 @@ class CustomSearchableField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFieldSearch(
       label: hintText,
-      controller: controller,
+      controller: TextEditingController(),
       initialList: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'],
       decoration: InputDecoration(
         constraints: constraints,

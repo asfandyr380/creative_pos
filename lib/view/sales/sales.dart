@@ -20,8 +20,11 @@ class Sales extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomButton(
-                text: "Create Sale", onTap: () => newSale()),
+            SizedBox(
+              width: 170,
+              child: CustomButton(
+                  text: "Create Sale", onTap: () => newSale()),
+            ),
             const SizedBox(height: 28),
             Align(
               alignment: Alignment.centerRight,

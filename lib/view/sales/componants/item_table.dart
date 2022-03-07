@@ -75,7 +75,7 @@ class ItemTable extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     SizedBox(
                       width: 140,
                       child: Text(
@@ -123,10 +123,16 @@ class ItemTable extends StatelessWidget {
                     ),
                     SizedBox(
                       width: 60,
-                      child: Icon(
-                        FontAwesomeIcons.trashAlt,
-                        color: Colors.red,
-                        size: 16,
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: const MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: Icon(
+                            FontAwesomeIcons.trashAlt,
+                            color: Colors.red,
+                            size: 16,
+                          ),
+                        ),
                       ),
                     )
                   ],

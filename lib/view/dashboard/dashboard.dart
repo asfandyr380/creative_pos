@@ -11,85 +11,87 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Dashboard",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 22,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "Dashboard",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              ),
             ),
-          ),
-          const SizedBox(height: 28),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DashboardCard(
-                count: NumberFormat.compact().format(123123),
-                title: "Total Sales",
-                icon: FontAwesomeIcons.cashRegister,
-                iconBoxColor: AppColors.lightred,
-              ),
-              DashboardCard(
-                count: NumberFormat.compact().format(123123),
-                title: "Total Purchase",
-                icon: FontAwesomeIcons.moneyBillWave,
-                iconBoxColor: AppColors.lightgreen,
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DashboardCard(
-                count:
-                    NumberFormat.compactCurrency(symbol: "", decimalDigits: 2)
-                        .format(721),
-                title: "Sales Amount",
-                icon: FontAwesomeIcons.moneyBill,
-                iconBoxColor: AppColors.lightpurple,
-                isCurrency: true,
-              ),
-              DashboardCard(
-                count:
-                    NumberFormat.compactCurrency(symbol: "", decimalDigits: 2)
-                        .format(3212),
-                title: "Purchase Amount",
-                icon: FontAwesomeIcons.moneyBill,
-                iconBoxColor: AppColors.lightblue,
-                isCurrency: true,
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DashboardCard(
-                count: NumberFormat.compact().format(123123),
-                title: "Total Stock",
-                icon: FontAwesomeIcons.store,
-                iconBoxColor: AppColors.darkgreen,
-              ),
-              DashboardCard(
-                count: NumberFormat.compact().format(123123),
-                title: "Total Customers",
-                icon: FontAwesomeIcons.users,
-                iconBoxColor: AppColors.lightred,
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-          DashboardCard(
-            count: NumberFormat.compact().format(123123),
-            title: "Total Profit",
-            icon: FontAwesomeIcons.moneyBill,
-            iconBoxColor: AppColors.blue,
-            isCurrency: true,
-          ),
-        ],
+            const SizedBox(height: 28),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DashboardCard(
+                  count: NumberFormat.compact().format(123123),
+                  title: "Total Sales",
+                  icon: FontAwesomeIcons.cashRegister,
+                  iconBoxColor: AppColors.lightred,
+                ),
+                DashboardCard(
+                  count: NumberFormat.compact().format(123123),
+                  title: "Total Purchase",
+                  icon: FontAwesomeIcons.moneyBillWave,
+                  iconBoxColor: AppColors.lightgreen,
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DashboardCard(
+                  count:
+                      NumberFormat.compactCurrency(symbol: "", decimalDigits: 2)
+                          .format(721),
+                  title: "Sales Amount",
+                  icon: FontAwesomeIcons.moneyBill,
+                  iconBoxColor: AppColors.lightpurple,
+                  isCurrency: true,
+                ),
+                DashboardCard(
+                  count:
+                      NumberFormat.compactCurrency(symbol: "", decimalDigits: 2)
+                          .format(3212),
+                  title: "Purchase Amount",
+                  icon: FontAwesomeIcons.moneyBill,
+                  iconBoxColor: AppColors.lightblue,
+                  isCurrency: true,
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DashboardCard(
+                  count: NumberFormat.compact().format(123123),
+                  title: "Total Stock",
+                  icon: FontAwesomeIcons.store,
+                  iconBoxColor: AppColors.darkgreen,
+                ),
+                DashboardCard(
+                  count: NumberFormat.compact().format(123123),
+                  title: "Total Customers",
+                  icon: FontAwesomeIcons.users,
+                  iconBoxColor: AppColors.lightred,
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            DashboardCard(
+              count: NumberFormat.compact().format(123123),
+              title: "Total Profit",
+              icon: FontAwesomeIcons.moneyBill,
+              iconBoxColor: AppColors.blue,
+              isCurrency: true,
+            ),
+          ],
+        ),
       ),
     );
   }
