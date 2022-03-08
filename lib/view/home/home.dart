@@ -7,6 +7,7 @@ import 'package:creative_pos/view/purchase/newPurchase.dart';
 import 'package:creative_pos/view/purchase/purchase.dart';
 import 'package:creative_pos/view/sales/new_sale.dart';
 import 'package:creative_pos/view/sales/sales.dart';
+import 'package:creative_pos/view/stock/stock.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -23,20 +24,19 @@ class Home extends StatelessWidget {
             flex: 2,
             child: Obx(
               () => SideNavBar(
-                items: [
-                  NavitemModel("Dashboard", FontAwesomeIcons.thLarge),
-                  NavitemModel("Sales", FontAwesomeIcons.cashRegister),
-                  NavitemModel("Purchase", FontAwesomeIcons.moneyBillWave),
-                  NavitemModel("Stock", FontAwesomeIcons.store),
-                  NavitemModel("Customers", FontAwesomeIcons.users),
-                  NavitemModel("Reports", FontAwesomeIcons.infoCircle),
-                  NavitemModel("Settings", FontAwesomeIcons.cogs),
-                ],
-                onSelect: (i) {
-                  controller.currentIndex.value = i;
-                },
-                currentIndex: controller.currentIndex.value
-              ),
+                  items: [
+                    NavitemModel("Dashboard", FontAwesomeIcons.thLarge),
+                    NavitemModel("Sales", FontAwesomeIcons.cashRegister),
+                    NavitemModel("Purchase", FontAwesomeIcons.moneyBillWave),
+                    NavitemModel("Stock", FontAwesomeIcons.store),
+                    NavitemModel("Customers", FontAwesomeIcons.users),
+                    NavitemModel("Reports", FontAwesomeIcons.infoCircle),
+                    NavitemModel("Settings", FontAwesomeIcons.cogs),
+                  ],
+                  onSelect: (i) {
+                    controller.currentIndex.value = i;
+                  },
+                  currentIndex: controller.currentIndex.value),
             ),
           ),
           Flexible(
@@ -46,13 +46,13 @@ class Home extends StatelessWidget {
                 index: controller.currentIndex.value,
                 children: [
                   const Dashboard(),
-                  Sales((){
+                  Sales(() {
                     controller.currentIndex.value = 7;
                   }),
-                  Purchase((){
+                  Purchase(() {
                     controller.currentIndex.value = 8;
                   }),
-                  Text("stock"),
+                  Stock(),
                   Customer(),
                   Text("reports"),
                   Text("setting"),
