@@ -5,6 +5,7 @@ import '../res/app_color.dart';
 class CustomField extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String)? onSubmit;
+  final String? Function(String?)? validator;
   final TextInputType? inputType;
   final FocusNode? focusNode;
   final String hintText;
@@ -21,6 +22,7 @@ class CustomField extends StatelessWidget {
     this.prefixIcon = Icons.search_rounded,
     this.constraints,
     this.contentPadding,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -30,6 +32,7 @@ class CustomField extends StatelessWidget {
       onFieldSubmitted: onSubmit,
       keyboardType: inputType,
       focusNode: focusNode,
+      validator: validator,
       decoration: InputDecoration(
         constraints: constraints,
         contentPadding: contentPadding,

@@ -1,15 +1,20 @@
+import 'package:creative_pos/models/customer_model/customer_model.dart';
 import 'package:creative_pos/res/app_color.dart';
+import 'package:creative_pos/services/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class CustomerTable extends StatelessWidget {
   final List<String> columns;
   final bool loading;
+  final String searchString;
   const CustomerTable({
     Key? key,
     required this.columns,
     this.loading = false,
+    this.searchString = "",
   }) : super(key: key);
 
   @override
@@ -58,73 +63,83 @@ class CustomerTable extends StatelessWidget {
           ),
           loading ? SpinKitThreeInOut(color: AppColors.red) : const SizedBox(),
           // Column data
-          ListView.separated(
-            shrinkWrap: true,
-            itemCount: 10,
-            separatorBuilder: (ctx, i) => const Divider(
-              color: Color(0xff969090),
-              thickness: 0.3,
-            ),
-            itemBuilder: (ctx, i) {
-              return Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    SizedBox(
-                      width: 120,
-                      child: Text(
-                        'Asfand',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 120,
-                      child: Text(
-                        'Asfand Mobile',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 120,
-                      child: Text(
-                        '000000000',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 120,
-                      child: Text(
-                        '0',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 120,
-                      child: Text(
-                        '120',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 120,
-                      child: Icon(
-                        FontAwesomeIcons.ellipsisH,
-                      ),
-                    )
-                  ],
+          ValueListenableBuilder<Box<CustomerModel>>(
+            valueListenable: Boxes.getCustomerBox().listenable(),
+            builder: (ctx, box, _) {
+              final customer = box.values
+                  .where((item) =>
+                      searchString.isEmpty ? true : item.name == searchString)
+                  .toList()
+                  .cast<CustomerModel>();
+              return ListView.separated(
+                shrinkWrap: true,
+                itemCount: customer.length,
+                separatorBuilder: (ctx, i) => const Divider(
+                  color: Color(0xff969090),
+                  thickness: 0.3,
                 ),
+                itemBuilder: (ctx, i) {
+                  return Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: 120,
+                          child: Text(
+                            customer[i].name,
+                            style: const TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 120,
+                          child: Text(
+                            customer[i].shopName,
+                            style: const TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 120,
+                          child: Text(
+                            customer[i].phone,
+                            style: const TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 120,
+                          child: Text(
+                            '${customer[i].give}',
+                            style: const TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 120,
+                          child: Text(
+                            '${customer[i].take}',
+                            style: const TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 120,
+                          child: Icon(
+                            FontAwesomeIcons.ellipsisH,
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                },
               );
             },
           ),

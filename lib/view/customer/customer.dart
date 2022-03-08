@@ -30,6 +30,7 @@ class Customer extends StatelessWidget {
                         nameController: controller.nameController,
                         shopController: controller.shopController,
                         phoneController: controller.phoneController,
+                        onadd: () => controller.addCustomer(),
                       ),
                     );
                   }),
@@ -43,6 +44,7 @@ class Customer extends StatelessWidget {
                   controller: controller.searchController,
                   onSubmit: (value) {
                     debugPrint(value);
+                    controller.searchString.value = value;
                   },
                   constraints: const BoxConstraints(maxHeight: 30),
                   contentPadding:
@@ -51,8 +53,11 @@ class Customer extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 18),
-            CustomerTable(
-              columns: controller.columns,
+            Obx(
+              () => CustomerTable(
+                columns: controller.columns,
+                searchString: controller.searchString.value,
+              ),
             ),
             const SizedBox(height: 18),
             Obx(

@@ -1,10 +1,17 @@
+import 'package:creative_pos/models/customer_model/customer_model.dart';
 import 'package:creative_pos/res/app_color.dart';
 import 'package:creative_pos/view/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
-  // ErrorWidget.builder = (FlutterErrorDetails details) => Container();
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(CustomerModelAdapter());
+  await Hive.openBox<CustomerModel>('customers');
+
   runApp(const MyApp());
 }
 
