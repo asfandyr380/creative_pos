@@ -1,4 +1,5 @@
 import 'package:creative_pos/models/nav_item_model.dart';
+import 'package:creative_pos/view/customer/customer.dart';
 import 'package:creative_pos/view/dashboard/dashboard.dart';
 import 'package:creative_pos/view/home/componants/side_navbar.dart';
 import 'package:creative_pos/view/home/controller/home_controller.dart';
@@ -52,7 +53,7 @@ class Home extends StatelessWidget {
                     controller.currentIndex.value = 8;
                   }),
                   Text("stock"),
-                  Text("customer"),
+                  Customer(),
                   Text("reports"),
                   Text("setting"),
                   NewSale(),

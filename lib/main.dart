@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 
 void main() {
   // ErrorWidget.builder = (FlutterErrorDetails details) => Container();
-
   runApp(const MyApp());
 }
 
